@@ -22,17 +22,12 @@ app.get('/todo', function(req, res){
     db.serialize(function () {
     db.all('SELECT * FROM todolist', function (err, row) {
     res.send(JSON.stringify(row))
-    console.log(row)
+    res.end()
     
         })
         
 	})
-
-db.close()
     
 })
-
-
-
 
 app.listen(3000, function() {console.log('server sudah jalan')})
