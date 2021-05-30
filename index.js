@@ -2,9 +2,12 @@ const express = require('express')
 const app = express()
 const sqlite = require('sqlite3').verbose()
 let db = new sqlite.Database('todo_database.db')
-const bodyParser = require('body-parser')
+var cors = require('cors')
 
-app.use(bodyParser.urlencoded({ extended: true }))
+
+app.use(express.urlencoded())
+app.use(express.json())
+app.use(cors())
 
 
 app.get('/', function(req, res) {
