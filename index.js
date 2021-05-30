@@ -16,9 +16,15 @@ app.get('/', function(req, res) {
 })
 
 app.post('/todo', (req, res)=>{
-    db.run(`INSERT INTO todolist VALUES ("${req.body.deskripsi}")`)
+    db.run(`INSERT INTO todolist (deskripsi) VALUES("${req.body.deskripsi}")`)
     res.end()
 
+})
+
+app.delete('/todo/:id', (req, res)=>{
+    let id = req.params.id
+    db.run(`DELETE FROM todolist WHERE id = ${id}`)
+    res.end()
 })
 
 app.get('/todo', function(req, res){    
