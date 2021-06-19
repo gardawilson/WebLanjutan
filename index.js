@@ -63,15 +63,14 @@ app.post('/users', (req, res, next)=>{
 })
 
 app.get('/users', auth, function(req, res){
-    res.send('<html><body> <label>Registrasi</label> <form action="/users" method="post"> <input name="username"></input> <input name="password"></input> <button>Daftar</button> </form> </html></body>')
-//    db.serialize(function () {
-//    db.all('SELECT * FROM users', function (err, row) {
-//    res.send(JSON.stringify(row))
-//    res.end()
-//
-//        })
-//
-//	})
+    db.serialize(function () {
+    db.all('SELECT * FROM users', function (err, row) {
+    res.send(JSON.stringify(row))
+    res.end()
+
+        })
+
+	})
 
 })
 
